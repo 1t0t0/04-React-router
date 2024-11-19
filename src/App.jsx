@@ -10,6 +10,7 @@ import ContactForm from './components/ContactForm'
 import NotFound from './components/NotFound'
 import JobsLayout from './components/layout/JobsLayout'
 import Jobs, { jobsLoader } from './pages/Jobs'
+import JobDetail, { jobDetailLoader } from './components/JobDetail'
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
         </Route>
         <Route path='jobs' element={<JobsLayout />}>
           <Route index element={<Jobs />} loader={jobsLoader} />
+          <Route path=":id" element={<JobDetail />} loader={jobDetailLoader} />
 
         </Route>
         <Route path='*' element={<NotFound />} />
