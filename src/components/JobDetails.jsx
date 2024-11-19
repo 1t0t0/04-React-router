@@ -1,8 +1,7 @@
-import assert from 'assert'
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 
-const JobDetail = () => {
+const JobDetails = () => {
 
     const jobDetails = useLoaderData()
 
@@ -17,10 +16,13 @@ const JobDetail = () => {
     )
 }
 
-export default JobDetail
+export default JobDetails
 
 export const jobDetailLoader = async ({ params }) => {
     const { id } = params;
     const res = await fetch("http://localhost:5001/jobs/" + id);
+    if (!res.ok) {
+        throw Error('Could not found this job detail')
+    }
     return res.json();
 }
